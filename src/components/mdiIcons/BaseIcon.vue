@@ -21,6 +21,6 @@
         },
     });
 
-    const { icon } = toRefs(props);
+    const { icon, color } = toRefs(props);
 
 </script>
