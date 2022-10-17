@@ -20,6 +20,10 @@
     @apply flex relative !important;
   }
 
+  .tooltip {
+    @apply z-10;
+  }
+
   .menu-dropdown {
     @apply py-2 rounded shadow-xl bg-white absolute left-0 right-0 z-10 min-w-[60px];
   }
@@ -49,6 +53,9 @@
   .table-app {
     @apply hidden sm:table w-full !important;
   }
+  .table-app-footer {
+    @apply border-t !important;
+  }
   .table-app__mobile {
     @apply row sm:hidden;
   }
@@ -59,7 +66,7 @@
     @apply text-lg font-semibold flex-1;
   }
   .table-app__mobile-table-row {
-    @apply col-12 border-b border-gray-300;
+    @apply col-12 border-b border-secondary;
   }
   .table-app__mobile-table-col {
     @apply col-12 flex;
@@ -68,13 +75,13 @@
     @apply gap-4 row p-3;
   }
   .table-app > thead {
-    @apply border-b border-gray-200;
+    @apply border-gray-300 !important;
+  }
+  .table-app > thead > tr {
+    @apply border-b-0 border-gray-300;
   }
   .table-app > thead > tr > th {
     @apply h-[30px] sm:px-2 font-medium !important;
-  }
-  .table-app > tbody > tr {
-    @apply border-b border-t-0 border-gray-200;
   }
   .table-app > tbody > tr > td {
     @apply h-[35px] sm:p-2 !important;

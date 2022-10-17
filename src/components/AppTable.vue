@@ -66,24 +66,28 @@
                                                 v-show="state.dropdownRow === null || state.dropdownCondition === null && (state.searchOfTable !== '' || state.searchOfTable !== ' ')"
                                                 icon="Magnify"
                                             />
-                                            <button
-                                                v-show="state.dropdownRow !== null && state.dropdownCondition !== null && (state.searchOfTable !== '' || state.searchOfTable !== ' ')"
-                                                @click="state.dropdownRow = null, state.dropdownCondition = null, state.searchOfTable = ''"
-                                            >
-                                                <icon
-                                                    icon="CloseCircleOutline"
-                                                />
-                                            </button>
+                                            <div class="tooltip tooltip-bottom flex" data-tip="Нажмите, чтобы очистить все">
+                                                <button
+                                                    v-show="state.dropdownRow !== null && state.dropdownCondition !== null && (state.searchOfTable !== '' || state.searchOfTable !== ' ')"
+                                                    @click="state.dropdownRow = null, state.dropdownCondition = null, state.searchOfTable = ''"
+                                                >
+                                                    <icon
+                                                        icon="CloseCircleOutline"
+                                                    />
+                                                </button>
+                                            </div>
                                         </span>
                                         <input type="text" placeholder="Введите значение" class="input input-bordered !outline-none !w-[90%]" v-model="state.searchOfTable">
                                         <span v-show="state.searchOfTable !== '' && state.searchOfTable !== ' '">
-                                            <button
-                                                @click="state.searchOfTable = ''"
-                                            >
-                                                <icon 
-                                                    icon="Close"
-                                                />
-                                            </button>
+                                            <div class="tooltip tooltip-left flex" data-tip="Нажмите, чтобы очистить ввод">
+                                                <button
+                                                    @click="state.searchOfTable = ''"
+                                                >
+                                                    <icon 
+                                                        icon="Close"
+                                                    />
+                                                </button>
+                                            </div>
                                         </span>
                                     </label>
 
@@ -101,8 +105,37 @@
                 appear
                 class="table-app__mobile"
             >
+                <div
+                    v-show="sliceItemOfPage.length === 0"
+                    class="table-app__mobile-table-row"
+                >
+                    <div class="table-app__mobile-table-col-row">
+                        <div class="table-app__mobile-col justify-center items-center gap-3">
+                            <div class="table-app__mobile-col__title">
+                                <icon
+                                    icon="Help"
+                                />
+                            </div>
+                            <div 
+                                class="table-app__mobile-col__data text-center"
+                            >
+                                <span class="font-semibold">
+                                    Ничего не найдено, может стоит 
+                                    <button 
+                                        class="btn btn-link"
+                                        @click="state.searchOfTable = ''"
+                                    >
+                                        очистить
+                                    </button>
+                                    поиск
+                                </span>   
+                            </div>
+                        </div> 
+                    </div>
+                </div>
                 <div 
                     v-for="rowData in state.countRows === null ? sliceItemOfPage : sliceItemOfPage[state.currentPage-1]"
+                    v-show="sliceItemOfPage.length > 0"
                     :key="rowData"
                     class="table-app__mobile-table-row"
                 >
@@ -128,7 +161,7 @@
                             >
                                 <button
                                     class="btn btn-ghost"
-                                    @click="state.searchOfTable = rowData[col.value]"  
+                                    @click="state.dropdownRow = i, state.dropdownCondition = 1, state.searchOfTable = rowData[col.value]"
                                 >
                                     {{ rowData[col.value] }}
                                 </button>
@@ -149,7 +182,7 @@
                                 class="btn btn-ghost"
                                 @click="state.dropdownRow = i"
                             >
-                               {{col.text}}
+                               {{ col.text }}
                             </button>
                         </th>
                     </tr>
@@ -160,26 +193,55 @@
                     mode="in-out"
                     appear
                 >
+                    <tr
+                        v-show="sliceItemOfPage.length === 0"
+                        class="w-full"
+                    >
+                        <td :colspan="columns.length">
+                            <div class="flex justify-center items-center gap-4">
+                                <icon
+                                    icon="Help"
+                                />
+                                <span class="font-semibold">
+                                    Ничего не найдено, может стоит 
+                                    <button 
+                                        class="btn btn-link"
+                                        @click="state.searchOfTable = ''"
+                                    >
+                                        очистить
+                                    </button>
+                                    поиск
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
                     <tr 
                         v-for="rowData in state.countRows === null ? sliceItemOfPage : sliceItemOfPage[state.currentPage-1]"
+                        v-show="sliceItemOfPage.length > 0"
                         :key="rowData"
                     >
                         <td 
-                            v-for="col in columns"
+                            v-for="(col, i) in columns"
                             :key="col"
                             :class="[ `!text-${col.alignCol === undefined ? 'left': col.alignCol}`, `!bg-${rowData.foundCol === col.value ? colorOnFoundCols : ''}`, { 'text-white': rowData.foundCol === col.value } ]"
                         >
-                            <button
-                                class="btn btn-ghost"
-                                @click="state.searchOfTable = rowData[col.value]"
+                            <div 
+                                class="tooltip tooltip-bottom" 
+                                data-tip="Нажмите чтобы найти похожий"
+                                :class="{'!tooltip-right': i === 0, '!tooltip-left': i === columns.length-1}"
                             >
-                                {{ rowData[col.value] }}
-                            </button>
+                                <button
+                                    class="btn btn-ghost"
+                                    @click="state.dropdownRow = i, state.dropdownCondition = 1, state.searchOfTable = rowData[col.value]"
+                                >
+                                    {{ rowData[col.value] }}
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </TransitionGroup>
             </table>
-            <footer class="card-footer">
+            <footer class="card-footer table-app-footer">
                 <div class="card-footer-item">
                     <div class="row">                        
                         <div class="col-12 sm:col-5 gap-2 flex items-center">
@@ -190,7 +252,7 @@
                                 <template #activator="menu">
                                     <div class="row gx-0">
                                         <button 
-                                            class="flex border-b-2 border-gray-500 pb-1"
+                                            class="flex border-b-2 border-gray-500"
                                             
                                         >
                                             {{ state.countRows === null ? "Все" : state.countRows}}
@@ -259,10 +321,19 @@
     import { defineProps, toRefs, computed, reactive, onBeforeMount } from "vue";
 
     const props = defineProps({
+        /*
+            text: Name of col, 
+            value: Value for code,
+            alignCol: All elments in col aligment, default: text-left
+        */
         columns: {
             type: Array,
             required: true,
         }, 
+        /*
+            col 
+            [columns.value]: / someValue /
+        */
         items: {
             type: Array,
             required: true,
@@ -355,16 +426,21 @@
 
         else {
             return state.tableData.filter(col => {
+                console.log(col[rowSelected], state.searchOfTable, col, rowSelected);
+                console.log(new Date(col[rowSelected]) > new Date(state.searchOfTable));
+                let rowSelectedValueCheckOfData = (rowSelected === "date") ? new Date(col[rowSelected]): col[rowSelected];
+                let searchOfTableDataCheckOfData = (rowSelected === "date") ? new Date(state.searchOfTable): state.searchOfTable;
+
                 switch(actionsSelected) {
                     case "===": 
                         col[rowSelected] === state.searchOfTable ? col.foundCol = rowSelected : col.foundCol = null;
                         return col[rowSelected] === state.searchOfTable
                     case ">":
-                        col[rowSelected] > state.searchOfTable ? col.foundCol = rowSelected : col.foundCol = null;
-                        return col[rowSelected] > state.searchOfTable;
+                        rowSelectedValueCheckOfData > searchOfTableDataCheckOfData ? col.foundCol = rowSelected : col.foundCol = null;
+                        return rowSelectedValueCheckOfData > searchOfTableDataCheckOfData;
                     case "<": 
-                        col[rowSelected] < state.searchOfTable ? col.foundCol = rowSelected : col.foundCol = null;
-                        return col[rowSelected] < state.searchOfTable;
+                        rowSelectedValueCheckOfData < searchOfTableDataCheckOfData ? col.foundCol = rowSelected : col.foundCol = null;
+                        return rowSelectedValueCheckOfData < searchOfTableDataCheckOfData;
                     case "By":
                         col[rowSelected].includes(state.searchOfTable) ? col.foundCol = rowSelected : col.foundCol = null;
                         return col[rowSelected].includes(state.searchOfTable);

@@ -21,6 +21,9 @@
     .dropdown {
         @apply flex relative #{!important};
     }
+    .tooltip {
+        @apply z-10;
+    };
     .menu {
         &-dropdown {
             @apply py-2 rounded shadow-xl bg-white absolute left-0 right-0 z-10 min-w-[60px];
@@ -33,6 +36,7 @@
             }
         }
     };
+    
     .pagination {
         @apply flex flex-nowrap gap-4;
         &__btn {
@@ -48,8 +52,12 @@
             } 
         }   
     }
+
     .table-app { 
         @apply hidden sm:table w-full #{!important};
+        &-footer {
+            @apply border-t #{!important};
+        };
         &__mobile {
             @apply row sm:hidden;
             &-col {
@@ -63,7 +71,7 @@
             }
             &-table {
                 &-row {
-                    @apply col-12 border-b border-gray-300;
+                    @apply col-12 border-b border-secondary;
                 }
 
                 &-col {
@@ -81,8 +89,9 @@
 
 
         & > thead {
-            @apply border-b border-gray-200;
+            @apply border-gray-300 #{!important};
             & >  tr {
+                @apply border-b-0 border-gray-300;
                 & > th {
                     @apply h-[30px] sm:px-2 font-medium #{!important};
                 }
@@ -91,7 +100,6 @@
 
         & > tbody {
             & > tr {
-                @apply border-b border-t-0 border-gray-200;
                 & > td {
                     @apply h-[35px] sm:p-2 #{!important};
                 }

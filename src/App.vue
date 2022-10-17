@@ -40,7 +40,8 @@ const state = reactive({
 
     {
       text: "Расттояние",
-      value: "distance"
+      value: "distance",
+      alignCol: "right"
     }
   ],
   bodyItems: [
@@ -48,53 +49,53 @@ const state = reactive({
       name: "test2",
       distance: "test",
       count: "3",
-      date: "test",
+      date: "12.5.12",
 
     },
     {
       name: "test2",
       distance: "test2",
       count: "2",
-      date: "test2"
+      date: "12.12.12"
     },
 
     {
       name: "tessdasdst3",
-      distance: "test3",
+      distance: "1000",
       count: "1",
-      date: "test3"
+      date: "12.12.12"
     },
 
     {
       name: "tdasdasdasest3",
-      distance: "test3",
-      count: "1",
-      date: "test3"
+      distance: "1003",
+      count: "5",
+      date: "12.10.12"
     }, 
 
     {
       name: "tesdasdadt3",
-      distance: "test3",
+      distance: "2000",
       count: "1",
-      date: "test3"
+      date: "10.10.10"
     }, 
     {
       name: "tevst3",
-      distance: "test3",
-      count: "1",
-      date: "test3"
+      distance: "3000",
+      count: "3",
+      date: "12.9.12"
     }, 
     {
       name: "test3",
-      distance: "test3",
+      distance: "4000",
       count: "1",
-      date: "test3"
+      date: "12.12.10"
     },
     {
       name: "test3",
-      distance: "tesdsfdsft3",
-      count: "1",
-      date: "test3"
+      distance: "5000",
+      count: "7",
+      date: "12.8.12"
     }, 
   ]
 });
