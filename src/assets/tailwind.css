@@ -6,52 +6,30 @@
     @apply gap-8 flex flex-col h-full w-full;
   }
 
-  .card-header {
-    @apply flex-wrap px-2 border-b border-gray-300 shadow !important;
+  .header {
+    @apply navbar shadow-lg bg-base-100 px-5;
   }
-  .card-body {
-    @apply gap-0 !important;
-  }
-  .card-footer {
-    @apply p-4 !important;
+
+  .footer {
+    @apply footer-center p-4 bg-base-300 text-base-content !important;
   }
 
   .dropdown {
-    @apply flex relative !important;
-  }
-
-  .tooltip {
-    @apply z-10;
+    @apply flex relative;
   }
 
   .menu-dropdown {
     @apply py-2 rounded shadow-xl bg-white absolute left-0 right-0 z-10 min-w-[60px];
   }
-  .menu-dropdown__item {
-    @apply p-3 text-lg cursor-pointer transition-all rounded hover:bg-gray-200;
-  }
   .menu-dropdown__item-active {
-    @apply text-white bg-blue-700  !important;
-  }
-
-  .pagination {
-    @apply flex flex-nowrap gap-4;
-  }
-  .pagination__btn {
-    @apply items-center;
-  }
-  .pagination__btn-disabled {
-    @apply pointer-events-none text-gray-600;
-  }
-  .pagination__item {
-    @apply py-1 px-3 shadow rounded bg-white transition-all hover:scale-105 hover:shadow-md;
-  }
-  .pagination__item-active {
-    @apply bg-blue-500 text-white scale-110 !important;
+    @apply text-primary-content bg-primary !important;
   }
 
   .table-app {
     @apply hidden sm:table w-full !important;
+  }
+  .table-app__card {
+    @apply card shadow-xl rounded-none;
   }
   .table-app-footer {
     @apply border-t !important;
@@ -111,10 +89,40 @@
     @apply hidden sm:table-row !important;
   }
   .table-app-row__mobile-table-row {
-    @apply sm:hidden;
+    @apply sm: hidden;
   }
   .table-app-col {
-    @apply hidden sm:table-cell;
+    @apply hidden sm: table-cell;
+  }
+
+  .pagination {
+    @apply flex flex-nowrap gap-4;
+  }
+  .pagination__btn {
+    @apply items-center;
+  }
+  .pagination__btn-disabled {
+    @apply pointer-events-none text-gray-600;
+  }
+  .pagination__item {
+    @apply py-1 px-3 shadow rounded bg-white transition-all hover:scale-105 hover:shadow-md;
+  }
+  .pagination__item-active {
+    @apply bg-blue-500 text-white scale-110 !important;
+  }
+
+  .card-header {
+    @apply flex-wrap px-2 border-b border-gray-300 shadow !important;
+  }
+  .card-body {
+    @apply gap-0 !important;
+  }
+  .card-footer {
+    @apply p-4 !important;
+  }
+
+  .tooltip {
+    @apply z-10 !important;
   }
 }
 @layer base {
@@ -127,18 +135,18 @@
   opacity: 0;
 }
 .slide-x-enter-active {
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .slide-x-enter-to {
-  transition: all 0.5s;
+  transition: all 0.2s;
   opacity: 1;
 }
 .slide-x-leave-from {
-  transition: all 0.5s;
+  transition: all 0.2s;
   opacity: 1;
 }
 .slide-x-leave-active {
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .slide-x-leave-to {
   transform: translateX(-10%);
@@ -150,15 +158,15 @@
   opacity: 0;
 }
 .slide-y-enter-to {
-  transition: all 0.5s;
+  transition: all 0.2s;
   opacity: 1;
 }
 .slide-y-leave-from {
-  transition: all 0.5s;
+  transition: all 0.2s;
   opacity: 1;
 }
 .slide-y-leave-active {
-  transition: all 0.5s;
+  transition: all 0.2s;
   opacity: 0.6;
 }
 .slide-y-leave-to {
@@ -170,7 +178,7 @@
   opacity: 0;
 }
 .fade-enter-active {
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .fade-enter-to {
   opacity: 1;
@@ -179,7 +187,7 @@
   opacity: 1;
 }
 .fade-leave-active {
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .fade-leave-to {
   opacity: 0;

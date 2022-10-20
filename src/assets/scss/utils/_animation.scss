@@ -1,3 +1,5 @@
+@import '../abstracts/variablse';
+
 .slide {
     &-x {
         &-enter {
@@ -7,21 +9,21 @@
             }
 
             &-active {
-                transition: all .5s;
+                transition: all map-get($animate-speed, 'fast');
             }
 
             &-to {
-                transition: all .5s;
+                transition: all map-get($animate-speed, 'fast');
                 opacity: 1;    
             }
         }
         &-leave {
             &-from {
-                transition: all .5s;
+                transition: all map-get($animate-speed, 'fast');
                 opacity: 1;
             }
             &-active {
-                transition: all .5s;
+                transition: all map-get($animate-speed, 'fast');
             }
             &-to {
                 transform: translateX(-10%);
@@ -37,17 +39,17 @@
                 opacity: 0;
             };
             &-to {
-                transition: all .5s;
+                transition: all map-get($animate-speed, 'fast');
                 opacity: 1;
             }
         };
         &-leave {
             &-from {
-                transition: all .5s;
+                transition: all map-get($animate-speed, 'fast');
                 opacity: 1;
             }
             &-active {
-                transition: all .5s;
+                transition: all map-get($animate-speed, 'fast');
                 opacity: .6;
             }
             &-to {
@@ -65,7 +67,7 @@
         };
 
         &-active {
-            transition: all .5s;
+            transition: all map-get($animate-speed, 'fast');
         }
 
         &-to {
@@ -79,7 +81,7 @@
         }
 
         &-active {
-            transition: all .5s;
+            transition: all map-get($animate-speed, 'fast');
         }
 
         &-to {

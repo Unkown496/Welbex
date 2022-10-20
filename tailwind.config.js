@@ -6,6 +6,25 @@ module.exports = {
       "./index.html",
       "./src/**/*.{vue,js,ts,jsx,tsx}",
     ],
+    safelist: [
+      // for align col in appTable
+      '!text-center',
+      '!text-left',
+      '!text-right',
+      '!text-end',
+      '!text-start',
+      '!text-justify',
+
+      // for bg color on founded col
+      '!bg-primary',
+      '!bg-secondary',
+      '!bg-accent',
+      '!bg-neutral',
+      '!bg-info',
+      '!bg-success',
+      '!bg-warning',
+      '!bg-error',
+    ],
     theme: {
       extends: {
         screens: {

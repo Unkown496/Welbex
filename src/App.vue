@@ -1,10 +1,11 @@
 <template >
   <div class="wrapper">
     <app-header></app-header>
-    <app-table
+    <app-main></app-main>
+    <!-- <app-table
       :columns="state.header"
       :items="state.bodyItems"
-    ></app-table>
+    ></app-table> -->
     <app-footer></app-footer>
   </div>
 </template>
@@ -12,7 +13,7 @@
 <script setup>
 // import compontents
 import AppHeader from "./components/AppHeader.vue";
-import AppTable from "./components/AppTable.vue";
+import AppMain from "./components/AppMain.vue";
 import AppFooter from "./components/AppFooter.vue";
 
 // import vue

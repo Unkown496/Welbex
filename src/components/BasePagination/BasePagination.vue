@@ -47,13 +47,10 @@
             type: Boolean, 
             required: false,
         },
-        currentPage: String,
-        modelValue: {
-          type: [String, Number]
-        },
+        modelValue: [String, Number],
     });
 
-    const { length, hasArrow, currentPage } = toRefs(props);
+    const { length, hasArrow } = toRefs(props);
     
     defineEmits([
         'update:modelValue',
@@ -63,10 +60,4 @@
         activePage: 1,
     });
 
-    // const selectPage = (pageNumber, event) => {
-    //     const targetClasses = event.target.classList;
-    //     if(targetClasses.contains("pagination__item-active")) {
-
-    //     } 
-    // }
 </script>

@@ -25,27 +25,6 @@
                 <slot name="default"></slot>
             </ul>
         </Transition>
-        <!-- <div 
-            class="dropdown__activator"
-            @click="state.isClick = !state.isClick, state.isClickOutside = false" 
-        >
-            <slot 
-                name="activator" 
-                :click="state.isClick"
-            />
-        </div> 
-        <Transition name="slide-y"> 
-            <div
-                v-show="state.isClick && !state.isClickOutside"
-                class="menu-dropdown"
-                ref="dropdownElements" 
-            >
-                <slot 
-                    name="default"
-                    :class="state.userChoiceClassessOnMenu"
-                />
-            </div>
-        </Transition> -->
     </div>
 </template>
 

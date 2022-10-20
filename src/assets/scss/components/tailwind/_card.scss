@@ -1,0 +1,11 @@
+.card {
+    &-header {
+        @apply flex-wrap px-2 border-b border-gray-300 shadow #{!important};
+    };
+    &-body {
+        @apply gap-0 #{!important};
+    };
+    &-footer {
+        @apply p-4 #{!important};
+    };
+};

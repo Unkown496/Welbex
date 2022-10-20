@@ -1,0 +1,14 @@
+.dropdown {
+    @apply flex relative;
+
+};
+.menu {
+    &-dropdown {
+        @apply py-2 rounded shadow-xl bg-white absolute left-0 right-0 z-10 min-w-[60px];
+        &__item {
+            &-active {
+                @apply text-primary-content bg-primary #{!important};
+            }
+        }
+    }
+}

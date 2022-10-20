@@ -1,5 +1,5 @@
 <template>
-    <header class="navbar shadow-lg bg-base-100 px-5">
+    <header class="header">
         <p class="normal-case text-xl flex-1 px-0 justify-start">Тз для Welbex</p>
         <button 
             class="btn btn-primary swap swap-rotate"

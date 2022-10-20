@@ -1,0 +1,15 @@
+.pagination {
+    @apply flex flex-nowrap gap-4;
+    &__btn {
+        @apply items-center;
+        &-disabled {
+            @apply pointer-events-none text-gray-600;
+        }
+    }
+    &__item {
+        @apply py-1 px-3 shadow rounded bg-white transition-all hover:scale-105 hover:shadow-md;
+        &-active {
+            @apply bg-blue-500 text-white scale-110 #{!important};
+        } 
+    }   
+}
