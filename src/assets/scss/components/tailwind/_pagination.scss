@@ -1,5 +1,5 @@
 .pagination {
-    @apply flex flex-nowrap gap-4;
+    @apply justify-center sm:justify-start flex flex-nowrap gap-4;
     &__btn {
         @apply items-center;
         &-disabled {

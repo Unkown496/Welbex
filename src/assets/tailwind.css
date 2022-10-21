@@ -26,49 +26,46 @@
   }
 
   .table-app {
-    @apply hidden sm:table w-full !important;
+    @apply table w-full !important;
   }
   .table-app__card {
     @apply card shadow-xl rounded-none;
   }
   .table-app-footer {
-    @apply border-t !important;
+    @apply border-0 !important;
   }
-  .table-app__mobile {
-    @apply row sm:hidden;
+  .table-app__row {
+    @apply flex flex-col sm:table-row;
   }
-  .table-app__mobile-col {
-    @apply col-12 flex items-baseline;
+  .table-app__col {
+    @apply hidden sm:table-cell;
   }
-  .table-app__mobile-col__title {
-    @apply text-lg font-semibold flex-1;
+  .table-app__col-mobile {
+    @apply items-center flex sm:hidden;
   }
-  .table-app__mobile-table-row {
-    @apply col-12 border-b border-secondary;
-  }
-  .table-app__mobile-table-col {
-    @apply col-12 flex;
-  }
-  .table-app__mobile-table-col-row {
-    @apply gap-4 row p-3;
+  .table-app__col-mobile__title {
+    @apply flex-1;
   }
   .table-app > thead {
-    @apply border-gray-300 !important;
+    @apply hidden sm:table-header-group border border-base-300 !important;
   }
   .table-app > thead > tr {
-    @apply border-b-0 border-gray-300;
+    @apply border-b border-base-300;
   }
   .table-app > thead > tr > th {
     @apply h-[30px] sm:px-2 font-medium !important;
   }
+  .table-app > tbody > tr {
+    @apply border-b border-base-300;
+  }
   .table-app > tbody > tr > td {
-    @apply h-[35px] sm:p-2 !important;
+    @apply sm:h-[35px] sm:p-2 !important;
   }
   .table-app-item {
     @apply hidden sm:block;
   }
   .table-app-item__col {
-    @apply border-b border-gray-200 py-4;
+    @apply border-b border-base-200 py-4;
   }
   .table-app-item__col-mobile {
     @apply block;
@@ -80,23 +77,17 @@
     @apply block sm:hidden;
   }
   .table-app-item__row-title {
-    @apply font-bold text-lg border-b border-gray-200;
+    @apply font-bold text-lg border-b border-base-200;
   }
   .table-app-header {
     @apply hidden sm:table-header-group;
-  }
-  .table-app-row__row {
-    @apply hidden sm:table-row !important;
-  }
-  .table-app-row__mobile-table-row {
-    @apply sm: hidden;
   }
   .table-app-col {
     @apply hidden sm: table-cell;
   }
 
   .pagination {
-    @apply flex flex-nowrap gap-4;
+    @apply justify-center sm:justify-start flex flex-nowrap gap-4;
   }
   .pagination__btn {
     @apply items-center;

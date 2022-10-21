@@ -16,8 +16,7 @@
                     <div class="col-12">
                         <div class="row sm:items-center">
                             <div class="col-6 sm:col-4 md:col-3 lg:col-2">
-                                <BaseDropdown
-                                >
+                                <BaseDropdown>
                                     <template #activator="menu">
                                         <button 
                                             class="btn btn-primary flex-1"
@@ -86,7 +85,13 @@
                                                 </button>
                                             </div>
                                         </span>
-                                        <input type="text" placeholder="Введите значение" class="input input-bordered !outline-none !w-[90%]" v-model="state.searchOfTable">
+                                        <input 
+                                            type="text" 
+                                            placeholder="Введите значение" 
+                                            class="input input-bordered !outline-none !w-[90%]" 
+                                            v-model="state.searchOfTable"
+                                            :disabled="state.dropdownRow === null || state.dropdownCondition === null" 
+                                        >
                                         <span v-show="state.searchOfTable !== '' && state.searchOfTable !== ' '">
                                             <div class="tooltip tooltip-left flex" data-tip="Нажмите, чтобы очистить ввод">
                                                 <button
@@ -107,25 +112,24 @@
                 </div>
             </template>
             <template #item.notFound>
-                <tr class="w-full">
-                    <td :colspan="state.header.length">
-                        <div class="flex justify-center items-center gap-4">
-                            <icon
-                                icon="Help"
-                            />
-                            <span class="font-semibold">
-                                Ничего не найдено, может стоит 
-                                <button 
-                                    class="btn btn-link"
-                                    @click="state.searchOfTable = ''"
-                                >
-                                    очистить
-                                </button>
-                                поиск
-                            </span>
+                <td :colspan="state.header.length">
+                    <div class="flex justify-center items-center gap-4">
+                        <icon
+                            icon="Help"
+                        />
+                        <div class="row sm:inline font-semibold items-center">
+
+                            <span class="col-12 sm:col-4">  Ничего не найдено, может стоит </span>
+                            <button 
+                                class="btn btn-link col-6 sm:col-4"
+                                @click="state.searchOfTable = ''"
+                            >
+                                очистить
+                            </button>
+                            <span class="col-6 sm:col-4"> поиск </span>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
             </template>
         </app-table>
     </main>

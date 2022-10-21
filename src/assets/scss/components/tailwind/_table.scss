@@ -1,74 +1,53 @@
 .table-app {
-    @apply hidden sm:table w-full #{!important};
+    @apply table w-full #{!important};
 
     &__card {
         @apply card shadow-xl rounded-none;
     }
     &-footer {
-        @apply border-t #{!important};
+        @apply border-0 #{!important};
     };
 
-    &__mobile {
-        @apply row sm:hidden;
-
-        &-col {
-            @apply col-12 flex items-baseline;
-
+    &__row {
+      @apply flex flex-col sm:table-row;
+    }
+    &__col {
+        @apply hidden sm:table-cell;
+        &-mobile {
+            @apply items-center flex sm:hidden;
             &__title {
-                @apply text-lg font-semibold flex-1;
+                @apply flex-1;
             }
-
-            &__data {}
-        }
-
-        &-table {
-            &-row {
-                @apply col-12 border-b border-secondary;
-            }
-
-            &-col {
-                @apply col-12 flex;
-
-                &-row {
-                    @apply gap-4 row p-3;
-                }
-
-            }
-
         }
     }
 
 
+    & > thead {
+        @apply hidden sm:table-header-group border border-base-300 #{!important};
 
-    &>thead {
-        @apply border-gray-300 #{!important};
+        & > tr {
+            @apply border-b border-base-300;
 
-        &>tr {
-            @apply border-b-0 border-gray-300;
-
-            &>th {
+            & > th {
                 @apply h-[30px] sm:px-2 font-medium #{!important};
             }
         }
-    }
+    };
 
-    ;
-
-    &>tbody {
-        &>tr {
-            &>td {
-                @apply h-[35px] sm:p-2 #{!important};
+    & > tbody {
+        & > tr {
+            @apply border-b border-base-300;
+            & > td {
+                @apply sm:h-[35px] sm:p-2 #{!important};
             }
         }
-    }
-
-    ;
+    };
 
     &-item {
         @apply hidden sm:block;
 
         &__col {
-            @apply border-b border-gray-200 py-4;
+            @apply border-b border-base-200 py-4;
 
             &-mobile {
                 @apply block;
@@ -83,7 +62,7 @@
             }
 
             &-title {
-                @apply font-bold text-lg border-b border-gray-200;
+                @apply font-bold text-lg border-b border-base-200;
             }
         }
     }
@@ -92,19 +71,19 @@
         @apply hidden sm:table-header-group;
     }
 
-    &-row {
-        &__row {
-            @apply hidden sm:table-row #{!important};
-        }
+    // &-row {
+    //     &__row {
+    //         @apply hidden sm:table-row #{!important};
+    //     }
 
-        &__mobile {
-            &-table {
-                &-row {
-                    @apply sm: hidden;
-                }
-            }
-        }
-    }
+    //     &__mobile {
+    //         &-table {
+    //             &-row {
+    //                 @apply sm: hidden;
+    //             }
+    //         }
+    //     }
+    // }
 
     &-col {
         @apply hidden sm: table-cell;

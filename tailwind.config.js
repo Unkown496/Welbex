@@ -24,6 +24,8 @@ module.exports = {
       '!bg-success',
       '!bg-warning',
       '!bg-error',
+
+      '!rounded-none'
     ],
     theme: {
       extends: {

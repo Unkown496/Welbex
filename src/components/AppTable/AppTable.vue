@@ -29,20 +29,49 @@
                         mode="in-out"
                         appear
                     >
-                        <template v-show="customFilter !== false ? customFilter.length === 0: false">
-                            <slot 
-                                name="item.notFound"
-                            ></slot>
-                        </template>
-
+                        <Transition 
+                            name="fade"
+                            appear
+                        >
+                            <tr v-show="customFilter !== false ? customFilter.length === 0: false">
+                                <slot 
+                                    name="item.notFound"
+                                ></slot>
+                            </tr>
+                        </Transition>
                         <tr
                             v-for="rowData in slicedTableItems[state.currentPage-1]"
                             :key="rowData"
+                            class="table-app__row"
                         >
+                            <td 
+                                v-for="(col, i) in columns"
+                                :key="col"
+                                :class="[`!bg-${ rowData.foundCol === col.value && customFilter !== false ? colorOnFoundCols : ''}`, { 'text-primary-content !rounded-none': rowData.foundCol === col.value && customFilter !== false } ]"  
+                                class="table-app__col-mobile"
+                            >
+                                <div class="table-app__col-mobile__title">
+                                    <button
+                                        class="btn btn-ghost"
+                                        @click="$emit('update:columnsValue', { colData: col, index: i })"
+                                    >
+                                        {{ col.text }}
+                                    </button>
+                                </div>
+                                <div class="table-app__col-mobile__data">
+                                    <button
+                                        class="btn btn-ghost"
+                                        @click="$emit('update:itemsValue', { itemData: rowData[col.value], itemColIndex: i, itemRef: rowData })"
+                                    >
+                                        {{ rowData[col.value] }}
+                                    </button>
+                                </div>
+                            </td>
                             <td
                                 v-for="(col, i) in columns"
                                 :key="col"
-                                :class="[`!text-${col.alignCol === undefined ? 'left': col.alignCol}`, `!bg-${ rowData.foundCol === col.value && customFilter !== false ? colorOnFoundCols : ''}`, { 'text-primary-content': rowData.foundCol === col.value && customFilter !== false } ]"
+                                :class="[`!text-${col.alignCol === undefined ? 'left': col.alignCol}`, `!bg-${ rowData.foundCol === col.value && customFilter !== false ? colorOnFoundCols : ''}`, { 'text-primary-content !rounded-none': rowData.foundCol === col.value && customFilter !== false } ]"
+                                class="table-app__col"
                             >
                                 <div
                                     class="tooltip tooltip-bottom"
@@ -170,7 +199,7 @@
             },
         },
 
-        "custom-filter": {
+        customFilter: {
             type: [Function, Boolean],
             required: false,
             default: () => {
